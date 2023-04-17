@@ -5,31 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
+
+    <link rel="stylesheet" href="styleResults.css">
 </head>
 <body>
-    <?php 
-        $paragrafo = $_POST['paragraph'];
+    <div class="first-text text">
 
-        $badword = $_POST['badword'];
+        <?php
+            // ottengo il paragrafo
+            $paragraph = $_POST['paragraph'];
+            // ottenho la parola da censurare
+            $badword = $_POST['badword'];
+            // visualizzo il paragrafo senza censure
+            echo $paragraph;
 
-        echo $paragrafo;
+        ?>
+
+        <br><br>
+
+        <span>La lunghezza del testo è: <?php  echo strlen($paragraph) ?> lettere</span>
+
+    </div>
+
 
     
-    ?>
-    <br>
-    <span>La lunghezza del testo è: <?php  echo strlen($paragrafo) ?> lettere</span>
+    <div class="second-text text">
 
-    <hr>
+        <?php 
+    
+            $newparagraph = str_replace($badword, '(***)' , $paragraph);
+    
+            echo $newparagraph;
+    
+        ?>
+    
+        <br><br>
+    
+        <span>La lunghezza del testo è: <?php  echo strlen($newparagraph) ?> lettere</span>
 
-    <?php 
-
-        $newparagraph = str_replace($badword, '(***)' , $paragrafo);
-
-        echo $newparagraph;
-
-    ?>
-
-    <span>La lunghezza del testo è: <?php  echo strlen($newparagraph) ?> lettere</span>
+    </div>
     
 </body>
 </html>
